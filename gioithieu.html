@@ -710,24 +710,16 @@
 
         <script>
 
-            AOS.init({
-                duration: 800,
-                once: true
-            });
-
-
-            const backToTopBtn = document.getElementById("backToTop");
-            window.onscroll = function () {
-                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                    backToTopBtn.style.display = "block";
-                } else {
-                    backToTopBtn.style.display = "none";
-                }
-            };
-            backToTopBtn.onclick = function () {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            };
-
+            const btnBack = document.getElementById("backToTop");
+            if (btnBack) {
+                window.addEventListener('scroll', () => {
+                    btnBack.style.display = window.scrollY > 300 ? "block" : "none";
+                });
+                btnBack.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        
 
             const langSwitches = document.querySelectorAll('.lang-switch');
 
